@@ -18,7 +18,7 @@
  * GitHub Issue: https://github.com/zmkfirmware/zmk/issues/885
  */
 
-&spi1 {
+&spi3 {
     compatible = "nordic,nrf-spim";
     status = "okay";
     mosi-pin = <6>;
