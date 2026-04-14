@@ -1,4 +1,9 @@
-on: [push, pull_request, workflow_dispatch]
+on:
+  push:
+    branches:
+      - 'keyboard/**'
+  pull_request:
+  workflow_dispatch:
 
 jobs:
   build:
