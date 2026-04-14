@@ -1,0 +1,5 @@
+// LED configuration — 27 LEDs per half (21 per-key + 6 underglow)
+
+&led_strip {
+  chain-length = <27>;
+};

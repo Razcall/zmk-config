@@ -1,0 +1,12 @@
+// RainbowCorne: LED strip config + boge wire CS pin override (P1.01)
+// The shared keymap.h conditionally includes rgb.h and the RGB ADJUST layer
+// when CONFIG_ZMK_RGB_UNDERGLOW is set (enabled in splitkb_aurora_corne.conf).
+
+#include "leds.dtsi"
+
+// Override nice!view CS pin to P1.01 (boge wire) instead of default P0.06
+&nice_view_spi {
+    cs-gpios = <&gpio1 1 GPIO_ACTIVE_HIGH>;
+};
+
+#include "keymap.h"
