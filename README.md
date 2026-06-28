@@ -77,3 +77,37 @@ trigger the GitHub Actions firmware build for that keyboard.
 The `firmwares/` directory is gitignored on all branches. Use it freely to
 store downloaded firmware files for any keyboard — it persists across branch
 switches.
+
+### Monitoring builds
+
+GitHub Actions triggers on every push to `keyboard/**` branches. Track builds:
+
+```bash
+gh run list --repo Razcall/zmk-config --limit 8
+gh run watch --repo Razcall/zmk-config   # live stream latest run
+```
+
+Or: [github.com/Razcall/zmk-config/actions](https://github.com/Razcall/zmk-config/actions)
+
+### Downloading firmware
+
+```bash
+cd firmwares
+./download-firmware.sh              # all 4 keyboards
+./download-firmware.sh darkkorn     # single keyboard
+```
+
+Downloads latest successful build per keyboard into `DATE_COMMIT_KEYBOARD/` subfolders.
+Requires `gh` CLI authenticated.
+
+### Flashing firmware
+
+```bash
+cd firmwares
+./flash-corne.sh                    # latest downloaded folder
+./flash-corne.sh darkkorn           # latest folder for that keyboard
+./flash-corne.sh 2026-04-14_abc1234_darkkorn  # exact folder
+```
+
+Interactive: choose left / right / both halves. Double-tap reset on nice!nano to enter bootloader.
+Optional settings reset (clears BLE bonds) if `settings_reset.uf2` present.
