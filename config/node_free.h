@@ -55,26 +55,31 @@
 };
 
 // Homerow mods macro
-// Usage: HOMEROW_MODS(name, hold_behavior, tap_behavior, tapping_term_ms)
-#define HOMEROW_MODS(name, hold_behavior, tap_behavior, tapping_term_ms) \
-/ { \
-  behaviors { \
-    name: name { \
-      compatible = "zmk,behavior-hold-tap"; \
-      #binding-cells = <2>; \
-      flavor = "tap-preferred"; \
-      tapping-term-ms = <tapping_term_ms>; \
-      quick-tap-ms = <175>; \
-      global-quick-tap; \
-      hold-trigger-on-release; \
-      hold-trigger-key-positions = <0>; \
-      bindings = <hold_behavior>, <tap_behavior>; \
-    }; \
-  }; \
+// - NOTE: Updated here from tap-prefered to balanced
+/ {
+  behaviors {
+    hm_l: hm_l {
+      compatible = "zmk,behavior-hold-tap";
+      #binding-cells = <2>;
+      flavor = "balanced";
+      tapping-term-ms = <175>;
+      quick-tap-ms = <175>;
+      require-prior-idle-ms = <150>;
+      hold-trigger-on-release;
+      hold-trigger-key-positions = <6 7 8 9 10 11 18 19 20 21 22 23 30 31 32 33 34 35 39 40 41>;
+      bindings = <&kp>, <&kp>;
+    };
+    hm_r: hm_r {
+      compatible = "zmk,behavior-hold-tap";
+      #binding-cells = <2>;
+      flavor = "balanced";
+      tapping-term-ms = <175>;
+      quick-tap-ms = <175>;
+      require-prior-idle-ms = <150>;
+      hold-trigger-on-release;
+      hold-trigger-key-positions = <0 1 2 3 4 5 12 13 14 15 16 17 24 25 26 27 28 29 36 37 38>;
+      bindings = <&kp>, <&kp>;
+    };
+  };
 };
 
-// Convenience macro for common homerow mod sets
-// Usage: HOMEROW_MODS_SET(prefix, tapping_term_ms)
-#define HOMEROW_MODS_SET(prefix, tapping_term_ms) \
-  HOMEROW_MODS(prefix##_l, &kp, &kp, tapping_term_ms) \
-  HOMEROW_MODS(prefix##_r, &kp, &kp, tapping_term_ms)

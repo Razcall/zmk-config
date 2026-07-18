@@ -23,10 +23,8 @@
     ╰─────┴─────┴─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┴─────┴─────╯
                       │ LALT│LW/FU│SF-SP│   │ ENT │ RSE │DL/AT│
                       ╰─────┴─────┴─────╯   ╰─────┴─────┴─────╯
-TODO: test HomeRow mods
+- NOTE: homerow mods now fully set in node_free.h
 */
-// Define Homerow behavior
-HOMEROW_MODS_SET(hm, 175)
 
 
 //tap dance definition for ctrl+esc
