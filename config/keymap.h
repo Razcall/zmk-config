@@ -374,4 +374,4 @@ LAYER(ARCANUM, "Arcanum",
                                   &kp LALT  &kp HOME   &kp SPC     &kp RET  &kp LGUI  &none
 )
 
-# Test comment: job testing 
+// Test comment: job testing 
