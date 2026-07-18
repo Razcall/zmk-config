@@ -48,8 +48,8 @@ LAYER(BASE, "Base",
 /*lower layer layout
     ╭─────┬─────┬─────┬─────┬─────┬─────╮   ╭─────┬─────┬─────┬─────┬─────┬─────╮
     │     │  1  │  2  │  3  │  4  │  5  │   │  6  │  7  │  8  │  9  │  0  │ BSPC│
-    │     │ BT5 │LEFT │DOWN │ UP  │RIGHT│   │     │  -  │  =  │  (  │  )  │  \  │
-    │     │ BT1 │ BT2 │ BT3 │ BT4 │USBTt│   │     │     │     │     │     │     │
+    │     │ BT4 │LEFT │DOWN │ UP  │RIGHT│   │     │  -  │  =  │  (  │  )  │  \  │
+    │     │ BT0 │ BT1 │ BT2 │ BT3 │USBTt│   │     │     │     │     │     │     │
     ╰─────┴─────┴─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┴─────┴─────╯
                       │     │     │     │   │     │     │ ALT │
                       ╰─────┴─────┴─────╯   ╰─────┴─────┴─────╯
@@ -57,10 +57,17 @@ LAYER(BASE, "Base",
 
 LAYER(LOWER, "Lower",
   &kp ESC       &kp N1          &kp N2       &kp N3         &kp N4        &kp N5          &kp N6              &kp N7            &kp N8      &kp N9            &kp N0            ___
-  ___           &bt BT_SEL 4    &kp LEFT     &kp DOWN       &kp UP        &kp RIGHT       ___                 &kp MINUS         &kp EQUAL   &kp LEFT_BRACKET  &kp RIGHT_BRACKET &kp BACKSLASH
-  ___           &bt BT_SEL 0    &bt BT_SEL 1 &bt BT_SEL 2   &bt BT_SEL 3  &out OUT_TOG    ___                 ___               ___         ___               ___               ___
+  ___           &bt4            &kp LEFT     &kp DOWN       &kp UP        &kp RIGHT       ___                 &kp MINUS         &kp EQUAL   &kp LEFT_BRACKET  &kp RIGHT_BRACKET &kp BACKSLASH
+  ___           &bt0            &bt1         &bt2           &bt3          &out OUT_TOG    ___                 ___               ___         ___               ___               ___
                                              ___            ___           ___             ___                 &mo ADJUST        &mt RALT DEL
 )
+
+// BT profile select: force output to BLE so wired->wireless is a single keypress
+MACRO(bt0, bindings = <&out OUT_BLE &bt BT_SEL 0>;)
+MACRO(bt1, bindings = <&out OUT_BLE &bt BT_SEL 1>;)
+MACRO(bt2, bindings = <&out OUT_BLE &bt BT_SEL 2>;)
+MACRO(bt3, bindings = <&out OUT_BLE &bt BT_SEL 3>;)
+MACRO(bt4, bindings = <&out OUT_BLE &bt BT_SEL 4>;)
 
 /* raise layer layout
     ╭─────┬─────┬─────┬─────┬─────┬─────╮   ╭─────┬─────┬─────┬─────┬─────┬─────╮
@@ -302,7 +309,6 @@ LAYER(MACNAV, "MacNav",
   ___  ___  ___  ___  ___  ___
 )
 
-
 /*
     ╭─────┬─────┬─────┬─────┬─────┬─────╮   ╭─────┬─────┬─────┬─────┬─────┬─────╮
     │RESET│     │     │     │     │     │   │BTCLR│     │     │     │     │RESET│
@@ -310,6 +316,7 @@ LAYER(MACNAV, "MacNav",
     │     │game1│game2│     │     │     │   │USBTt│     │     │     │     │     │
     ╰─────┴─────┴─────┴─────┴─────┴─────┘   └─────┴─────┴─────┴─────┴─────┴─────╯
 */
+
 
 // OS switch: disable previous toggled layers (OS overlays)
 MACRO(win1, bindings = <&bt BT_SEL 0 &to DEF &tog WIN>;)
